@@ -4,7 +4,7 @@ LABEL maintainer = "Nemo <nemo.tao@refinedchina.com>" \
 
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install --no-install-recommends curl build-essential python3-dev python3-distutils cmake -y && \
+    apt-get install --no-install-recommends curl wget build-essential python3-dev python3-distutils cmake -y && \
     curl https://bootstrap.pypa.io/get-pip.py | python3 && \
     apt-get --purge remove curl -y && \
     rm -rf /var/lib/apt/lists/*
