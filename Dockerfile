@@ -1,6 +1,6 @@
 FROM nvidia/cuda:11.2.0-base-ubuntu18.04
 LABEL maintainer = "Nemo <nemo.tao@refinedchina.com>" \
-      description = "A docker image that combines nvidia/cuda and python3"
+      description = "A docker image that combines nvidia/cuda and python"
 
 RUN apt-get update && \
     apt-get upgrade -y && \
