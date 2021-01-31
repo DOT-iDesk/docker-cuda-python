@@ -1,0 +1,6 @@
+dlib
+Cython
+numpy
+opencv-contrib-python-headless
+torch
+torchvision
