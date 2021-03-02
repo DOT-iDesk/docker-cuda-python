@@ -6,7 +6,9 @@ COPY prelude/ /prelude/
 
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install --no-install-recommends curl wget build-essential python3-dev python3-distutils cmake -y && \
+    apt-get install --no-install-recommends -y curl build-essential software-properties-common && \
+    add-apt-repository -y ppa:deadsnakes/ppa && \
+    apt-get install -y python3.9-dev python3.9-distutils cmake && \
     curl https://bootstrap.pypa.io/get-pip.py | python3 && \
     apt-get --purge remove curl -y && \
     rm -rf /var/lib/apt/lists/* && \
