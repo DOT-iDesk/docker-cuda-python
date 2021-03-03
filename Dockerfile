@@ -11,7 +11,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     add-apt-repository -y ppa:deadsnakes/ppa && \
     apt-get install -y python3.9-dev python3.9-distutils python3-pip cmake && \
     pip3 install --upgrade pip && \
-    apt-get remove --purge -y python3-pip && \
+    apt-get remove --purge -y python3-pip python3 && \
     rm -rf /var/lib/apt/lists/* && \
     pip install -r /prelude/requirements.txt && \
     unset DEBIAN_FRONTEND
