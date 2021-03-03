@@ -4,7 +4,8 @@ LABEL maintainer = "Nemo <nemo.tao@refinedchina.com>" \
 
 COPY prelude/ /prelude/
 
-RUN apt-get update && \
+RUN export DEBIAN_FRONTEND=noninteractive && \
+    apt-get update && \
     apt-get upgrade -y && \
     apt-get install --no-install-recommends -y curl build-essential software-properties-common && \
     add-apt-repository -y ppa:deadsnakes/ppa && \
@@ -12,4 +13,5 @@ RUN apt-get update && \
     curl https://bootstrap.pypa.io/get-pip.py | python3 && \
     apt-get --purge remove curl -y && \
     rm -rf /var/lib/apt/lists/* && \
-    pip install -r /prelude/requirements.txt
+    pip install -r /prelude/requirements.txt && \
+    unset DEBIAN_FRONTEND
