@@ -7,11 +7,9 @@ COPY prelude/ /prelude/
 RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && \
     apt-get upgrade -y && \
-    apt-get install --no-install-recommends -y curl build-essential software-properties-common && \
+    apt-get install --no-install-recommends -y build-essential software-properties-common && \
     add-apt-repository -y ppa:deadsnakes/ppa && \
-    apt-get install -y python3.9-dev python3.9-distutils cmake && \
-    curl https://bootstrap.pypa.io/get-pip.py | python3 && \
-    apt-get --purge remove curl -y && \
+    apt-get install -y python3.9-dev python3.9-distutils python3-pip cmake && \
     rm -rf /var/lib/apt/lists/* && \
     pip install -r /prelude/requirements.txt && \
     unset DEBIAN_FRONTEND
