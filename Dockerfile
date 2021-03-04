@@ -1,11 +1,11 @@
-FROM nvidia/cuda:10.2-base-ubuntu18.04
+FROM nvidia/cuda:10.2-cudnn8-runtime-ubuntu18.04
 LABEL maintainer = "Nemo <nemo.tao@refinedchina.com>" \
       description = "A docker image that combines nvidia/cuda and python3"
 
+ARG DEBIAN_FRONTEND=noninteractive
 COPY prelude/ /prelude/
 
-RUN export DEBIAN_FRONTEND=noninteractive && \
-    apt-get update && \
+RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install --no-install-recommends -y curl build-essential software-properties-common && \
     add-apt-repository -y ppa:deadsnakes/ppa && \
@@ -13,5 +13,4 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     curl https://bootstrap.pypa.io/get-pip.py | python3.9 && \
     apt-get --purge -y remove curl && \
     rm -rf /var/lib/apt/lists/* && \
-    pip install -r /prelude/requirements.txt && \
-    unset DEBIAN_FRONTEND
+    pip install -r /prelude/requirements.txt
